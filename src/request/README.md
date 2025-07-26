@@ -10,292 +10,162 @@
 | request_params | LoginRequest                |
 | reply_params   | LoginReply                  |
 
-## 登出(Layout)
-
-| 类型           | 值                      |
-| -------------- | ----------------------- |
-| service        |                         |
-| uri            | /api/v1/users/login/out |
-| method         | POST                    |
-| request_params | LayoutRequest           |
-| reply_params   | common.OkBody           |
-
-## 创建应用信息(AddApp)
-
-| 类型           | 值                       |
-| -------------- | ------------------------ |
-| service        |                          |
-| uri            | /api/v1/app/applications |
-| method         | POST                     |
-| request_params | AddAppRequest            |
-| reply_params   | AddAppReply              |
-
-## 获取应用(AppInfo)
-
-| 类型           | 值                              |
-| -------------- | ------------------------------- |
-| service        |                                 |
-| uri            | /api/v1/app/applications/:appId |
-| method         | GET                             |
-| request_params | AppInfoRequest                  |
-| reply_params   | AppInfoReply                    |
-
-## 获取应用列表(AppList)
-
-| 类型           | 值                                       |
-| -------------- | ---------------------------------------- |
-| service        |                                          |
-| uri            | /api/v1/app/applications/params/\*params |
-| method         | GET                                      |
-| request_params | AppListRequest                           |
-| reply_params   | AppListReply                             |
-
-## 更新应用(UpdateApp)
-
-| 类型           | 值                       |
-| -------------- | ------------------------ |
-| service        |                          |
-| uri            | /api/v1/app/applications |
-| method         | PUT                      |
-| request_params | UpdateAppRequest         |
-| reply_params   | UpdateAppReply           |
-
-## 修改应用状态(UpdateAppState)
-
-| 类型           | 值                             |
-| -------------- | ------------------------------ |
-| service        |                                |
-| uri            | /api/v1/app/applications/state |
-| method         | PATCH                          |
-| request_params | UpdateAppStateRequest          |
-| reply_params   | UpdateAppStateReply            |
-
-## 获取特定应用的所有设置(AppSettings)
-
-| 类型           | 值                                |
-| -------------- | --------------------------------- |
-| service        |                                   |
-| uri            | /api/v1/app/applications/settings |
-| method         | GET                               |
-| request_params | AppSettingsRequest                |
-| reply_params   | AppSettingsReply                  |
-
-## 更新特定应用的特定设置(UpdateAppSettings)
-
-| 类型           | 值                                |
-| -------------- | --------------------------------- |
-| service        |                                   |
-| uri            | /api/v1/app/applications/settings |
-| method         | PUT                               |
-| request_params | UpdateAppSettingsRequest          |
-| reply_params   | UpdateAppSettingsReply            |
-
-## 修改特定应用的特定设置状态(UpdateAppSettingsState)
-
-| 类型           | 值                                      |
-| -------------- | --------------------------------------- |
-| service        |                                         |
-| uri            | /api/v1/app/applications/settings/state |
-| method         | PATCH                                   |
-| request_params | UpdateAppSettingsStateRequest           |
-| reply_params   | UpdateAppSettingsStateReply             |
-
-## 获取特定应用的所有关联用户(ApplicationUsers)
-
-| 类型           | 值                                    |
-| -------------- | ------------------------------------- |
-| service        |                                       |
-| uri            | /api/v1/app/applications/:appId/users |
-| method         | GET                                   |
-| request_params | ApplicationUsersRequest               |
-| reply_params   | ApplicationUsersReply                 |
-
-## 将特定用户关联到特定应用(AddApplicationUser)
-
-| 类型           | 值                             |
-| -------------- | ------------------------------ |
-| service        |                                |
-| uri            | /api/v1/app/applications/users |
-| method         | POST                           |
-| request_params | AddApplicationUserRequest      |
-| reply_params   | AddApplicationUserReply        |
-
-## 修改特定用户与特定应用的关联状态(UpdateApplicationUserState)
-
-| 类型           | 值                                          |
-| -------------- | ------------------------------------------- |
-| service        |                                             |
-| uri            | /api/v1/app/applications/users/state/:state |
-| method         | PATCH                                       |
-| request_params | UpdateApplicationUserStateRequest           |
-| reply_params   | UpdateApplicationUserStateReply             |
-
-## 设置Application密钥Key(SetApplicationSecret)
-
-| 类型           | 值                              |
-| -------------- | ------------------------------- |
-| service        |                                 |
-| uri            | /api/v1/app/applications/secret |
-| method         | POST                            |
-| request_params | SetApplicationSecretRequest     |
-| reply_params   | SetApplicationSecretReply       |
-
-## 设置Application微信信息(SetApplicationWeChat)
-
-| 类型           | 值                              |
-| -------------- | ------------------------------- |
-| service        |                                 |
-| uri            | /api/v1/app/applications/wechat |
-| method         | POST                            |
-| request_params | SetApplicationWeChatRequest     |
-| reply_params   | SetApplicationWeChatReply       |
-
-## 获取自增ID列表(AutoIDConfList)
-
-| 类型           | 值                                  |
-| -------------- | ----------------------------------- |
-| service        |                                     |
-| uri            | /api/v1/pub/auto_id/params/\*params |
-| method         | GET                                 |
-| request_params | AutoIDConfListRequest               |
-| reply_params   | AutoIDConfListReply                 |
-
-## 创建自增ID(AddAutoIDConf)
-
-| 类型           | 值                   |
-| -------------- | -------------------- |
-| service        |                      |
-| uri            | /api/v1/pub/auto_id  |
-| method         | POST                 |
-| request_params | AddAutoIDConfRequest |
-| reply_params   | AddAutoIDConfReply   |
-
-## 获取自增ID(AutoIDConf)
-
-| 类型           | 值                                                |
-| -------------- | ------------------------------------------------- |
-| service        |                                                   |
-| uri            | /api/v1/pub/auto_id/:appId/:tableName/:columnName |
-| method         | GET                                               |
-| request_params | AutoIDConfRequest                                 |
-| reply_params   | AutoIDConfReply                                   |
-
-## 更新自增ID(UpdateAutoIDConf)
-
-| 类型           | 值                      |
-| -------------- | ----------------------- |
-| service        |                         |
-| uri            | /api/v1/pub/auto_id     |
-| method         | PUT                     |
-| request_params | UpdateAutoIDConfRequest |
-| reply_params   | UpdateAutoIDConfReply   |
-
-## 更新自增ID状态(UpdateAutoIDConfState)
-
-| 类型           | 值                           |
-| -------------- | ---------------------------- |
-| service        |                              |
-| uri            | /api/v1/pub/auto_id/state    |
-| method         | PATCH                        |
-| request_params | UpdateAutoIDConfStateRequest |
-| reply_params   | UpdateAutoIDConfStateReply   |
-
-## 新建用户(AddUser)
+## 获取用户信息(GetUserInfo)
 
 | 类型           | 值                 |
 | -------------- | ------------------ |
 | service        |                    |
-| uri            | /api/v1/users/user |
+| uri            | /api/v1/users/info |
 | method         | POST               |
-| request_params | AddUserRequest     |
-| reply_params   | AddUserReply       |
+| request_params | GetUserInfoRequest |
+| reply_params   | GetUserInfoReplay  |
 
-## 查询用户(UserInfo)
+## 用户充值积分(UserPointsRecharge)
 
-| 类型           | 值                                          |
-| -------------- | ------------------------------------------- |
-| service        |                                             |
-| uri            | /api/v1/users/user/:appID/:userType/:userID |
-| method         | GET                                         |
-| request_params | UserInfoRequest                             |
-| reply_params   | UserInfoReply                               |
+| 类型           | 值                            |
+| -------------- | ----------------------------- |
+| service        |                               |
+| uri            | /api/v1/users/points/recharge |
+| method         | POST                          |
+| request_params | UserPointsRechargeRequest     |
+| reply_params   | UserPointsRechargeReplay      |
 
-## 分页查询用户(UserList)
+## PPT分析(DhPptAnalysis)
 
-| 类型           | 值                                 |
-| -------------- | ---------------------------------- |
-| service        |                                    |
-| uri            | /api/v1/users/user/params/\*params |
-| method         | GET                                |
-| request_params | UserListRequest                    |
-| reply_params   | UserListReply                      |
+| 类型           | 值                      |
+| -------------- | ----------------------- |
+| service        |                         |
+| uri            | /api/v1/dh/ppt/analysis |
+| method         | POST                    |
+| request_params | DhPptAnalysisRequest    |
+| reply_params   | DhPptAnalysisReplay     |
 
-## 修改用户信息(UpdateUser)
+## PDF分析(DhPDFAnalysis)
 
-| 类型           | 值                 |
-| -------------- | ------------------ |
-| service        |                    |
-| uri            | /api/v1/users/user |
-| method         | PUT                |
-| request_params | UpdateUserRequest  |
-| reply_params   | UpdateUserReply    |
+| 类型           | 值                      |
+| -------------- | ----------------------- |
+| service        |                         |
+| uri            | /api/v1/dh/pdf/analysis |
+| method         | POST                    |
+| request_params | DhPDFAnalysisRequest    |
+| reply_params   | DhPDFAnalysisReplay     |
 
-## 修改用户状态(UpdateUserState)
+## 视频分析(DhVideoAnalysis)
 
-| 类型           | 值                       |
-| -------------- | ------------------------ |
-| service        |                          |
-| uri            | /api/v1/users/user/state |
-| method         | PATCH                    |
-| request_params | UpdateUserStateRequest   |
-| reply_params   | common.OkBody            |
+| 类型           | 值                        |
+| -------------- | ------------------------- |
+| service        |                           |
+| uri            | /api/v1/dh/video/analysis |
+| method         | POST                      |
+| request_params | DhVideoAnalysisRequest    |
+| reply_params   | DhVideoAnalysisReplay     |
 
-## 修改密码（修改自己密码）(UpdatePassword)
+## 音频分析(DhAudioAnalysis)
+
+| 类型           | 值                        |
+| -------------- | ------------------------- |
+| service        |                           |
+| uri            | /api/v1/dh/audio/analysis |
+| method         | POST                      |
+| request_params | DhAudioAnalysisRequest    |
+| reply_params   | DhAudioAnalysisReplay     |
+
+## 数字人形象列表(DhImagesList)
 
 | 类型           | 值                     |
 | -------------- | ---------------------- |
 | service        |                        |
-| uri            | /api/v1/users/password |
-| method         | PUT                    |
-| request_params | UpdatePasswordRequest  |
-| reply_params   | common.OkBody          |
+| uri            | /api/v1/dh/images/list |
+| method         | POST                   |
+| request_params | DhImagesListRequest    |
+| reply_params   | DhImagesListReplay     |
 
-## 管理员修改密码(UpdatePasswordAdmin)
+## 数字人声音列表(DhSoundList)
 
-| 类型           | 值                           |
-| -------------- | ---------------------------- |
-| service        |                              |
-| uri            | /api/v1/users/password/admin |
-| method         | PUT                          |
-| request_params | UpdatePasswordAdminRequest   |
-| reply_params   | common.OkBody                |
+| 类型           | 值                    |
+| -------------- | --------------------- |
+| service        |                       |
+| uri            | /api/v1/dh/sound/list |
+| method         | POST                  |
+| request_params | DhSoundListRequest    |
+| reply_params   | DhSoundListReplay     |
 
-## 获取用户地址(UserAddress)
+## 创建数字人视频(DhCreatedDigitalHuman)
 
-| 类型           | 值                                                        |
-| -------------- | --------------------------------------------------------- |
-| service        |                                                           |
-| uri            | /api/v1/users/address/:appID/:userType/:userID/:addressID |
-| method         | GET                                                       |
-| request_params | UserAddressRequest                                        |
-| reply_params   | UserAddressReply                                          |
+| 类型           | 值                               |
+| -------------- | -------------------------------- |
+| service        |                                  |
+| uri            | /api/v1/dh/created/digital/human |
+| method         | POST                             |
+| request_params | DhCreatedDigitalHumanRequest     |
+| reply_params   | DhCreatedDigitalHumanReplay      |
 
-## 获取用户地址列表(UserAddressList)
+## 获取数字人页面(DhPageConfGet)
 
-| 类型           | 值                                    |
-| -------------- | ------------------------------------- |
-| service        |                                       |
-| uri            | /api/v1/users/address/params/\*params |
-| method         | GET                                   |
-| request_params | UserAddressListRequest                |
-| reply_params   | UserAddressListReply                  |
+| 类型           | 值                       |
+| -------------- | ------------------------ |
+| service        |                          |
+| uri            | /api/v1/dh/page/conf/get |
+| method         | POST                     |
+| request_params | DhPageConfGetRequest     |
+| reply_params   | DhPageConfGetReplay      |
 
-## 获取用户联系方式(UserContact)
+## 保存数字人页面(DhPageConfSave)
 
-| 类型           | 值                                             |
-| -------------- | ---------------------------------------------- |
-| service        |                                                |
-| uri            | /api/v1/users/contact/:appID/:userType/:userID |
-| method         | GET                                            |
-| request_params | UserContactRequest                             |
-| reply_params   | UserContactReply                               |
+| 类型           | 值                        |
+| -------------- | ------------------------- |
+| service        |                           |
+| uri            | /api/v1/dh/page/conf/save |
+| method         | POST                      |
+| request_params | DhPageConfSaveRequest     |
+| reply_params   | DhPageConfSaveReplay      |
+
+## 获取预览图(DhPreviewImage)
+
+| 类型           | 值                       |
+| -------------- | ------------------------ |
+| service        |                          |
+| uri            | /api/v1/dh/preview/image |
+| method         | POST                     |
+| request_params | DhPreviewImageRequest    |
+| reply_params   | DhPreviewImageReplay     |
+
+## 生成视频(DhVideoGenerate)
+
+| 类型           | 值                        |
+| -------------- | ------------------------- |
+| service        |                           |
+| uri            | /api/v1/dh/video/generate |
+| method         | POST                      |
+| request_params | DhVideoGenerateRequest    |
+| reply_params   | DhVideoGenerateReplay     |
+
+## 获取数字人列表(DhList)
+
+| 类型           | 值              |
+| -------------- | --------------- |
+| service        |                 |
+| uri            | /api/v1/dh/list |
+| method         | POST            |
+| request_params | DhListRequest   |
+| reply_params   | DhListReplay    |
+
+## 复制数字人视频配置(DhCopyVideoConf)
+
+| 类型           | 值                     |
+| -------------- | ---------------------- |
+| service        |                        |
+| uri            | /api/v1/dh/copy        |
+| method         | POST                   |
+| request_params | DhCopyVideoConfRequest |
+| reply_params   | DhCopyVideoConfReplay  |
+
+## 获取阿里云文件上传授权(DhGetOssPolicyToken)
+
+| 类型           | 值                              |
+| -------------- | ------------------------------- |
+| service        |                                 |
+| uri            | /api/v1/dh/get/oss/policy/token |
+| method         | POST                            |
+| request_params | DhGetOssPolicyTokenRequest      |
+| reply_params   | DhGetOssPolicyTokenReplay       |

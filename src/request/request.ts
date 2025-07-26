@@ -26,7 +26,7 @@ type RequestCallback = (respData: string) => void;
  */
 export class Request {
   // 基础 API 地址
-  private baseURL: string = "http://localhost:8001";
+  private baseURL: string = "http://ai.time2016.com";
   /**
    * 发起 GET 请求
    * @param {string} url - 请求路径（相对路径）
