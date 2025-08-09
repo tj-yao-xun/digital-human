@@ -50,6 +50,7 @@ export class Verify {
     const headers: Record<string, string> = {
       "X-Requested-With": "XMLHttpRequest",
       "Content-Type": "application/json",
+      "APP-ID":"ai-tools-platform",
       "X-Timestamp": nowSeconds.toString(), // 时间戳用于防止重放攻击
     };
     let share256Key: Uint8Array;
@@ -93,6 +94,7 @@ export class Verify {
     const nowSeconds: number = Math.floor(Date.now() / 1000);
     const headers: Record<string, string> = {
       "X-Requested-With": "XMLHttpRequest",
+      "APP-ID":"ai-tools-platform",
       "Content-Type": "application/json",
       "X-Timestamp": nowSeconds.toString(),
     };

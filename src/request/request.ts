@@ -1,4 +1,4 @@
-import type { AxiosInstance } from "axios";
+import type {AxiosInstance, AxiosRequestHeaders} from "axios";
 import axios from "axios";
 import PromptBox from "@/stores/promptBox.ts";
 /**
@@ -130,16 +130,15 @@ export class Request {
       data: data,
     })
       .then((res) => {
-        const respData: string = res.data;
-        // 解析响应数据
-        const reply: respInter = JSON.parse(respData);
+        const respData: respInter = res.data;
+
         // 业务状态码校验
-        if (reply.code !== 0) {
-          PromptBox.errorPromptBox("ERROR", reply.msg);
+        if (respData.code !== 0) {
+          PromptBox.errorPromptBox("ERROR", respData.msg);
           return;
         } else {
           // 执行成功回调（传递data字段内容）
-          callback(reply.data);
+          callback(respData.data);
         }
       })
       .catch((error) => {
