@@ -335,8 +335,7 @@ export class DhRequest {
         callback(replyData);
       } catch (e) {
         console.error("响应数据解析失败:", e);
-      }
-    });
+      }       });
   }
   /**
    * 获取预览图
@@ -433,6 +432,7 @@ export class DhRequest {
         console.error("响应数据解析失败:", e);
       }
     });
+
   }
   /**
    * 复制数字人视频配置

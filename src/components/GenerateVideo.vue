@@ -1,48 +1,37 @@
 <template>
-  <span>生成视频类型：</span>
-  <el-select
-    v-model="value"
-    placeholder="请选择生成视频类型"
-    style="width: 240px"
-  >
-    <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value"
-    />
-  </el-select>
+    <span>生成视频类型</span>
+    <el-select
+      v-model="videoValue"
+      placeholder="请选择生成视频类型"
+      class="videoSelectStyle"
+      @change="handleChangeVideoType"
+    >
+      <el-option
+        v-for="item in options"
+        :key="item.key"
+        :label="item.label"
+        :value="item.key"
+      />
+    </el-select>
 </template>
 
 <script type="ts" setup>
+import commonConfig from "@/config/common"
 import { ref } from 'vue'
+const videoValue = ref('')
+const options = commonConfig.videoTypeOptions
 
-const value = ref('')
+const emit = defineEmits(['select-data','message']);
 
-const options = [
-  {
-    value: '1',
-    label: '纯数字人',
-  },
-  {
-    value: '2',
-    label: '自定义背景数字人',
-  },
-  {
-    value: '3',
-    label: '透明数字人',
-  },
-  {
-    value: '4',
-    label: '内容播报数字人',
-  },
-  {
-    value: '5',
-    label: '纯内容配音',
-  }
-]
+const handleChangeVideoType = (value) => {
+  videoValue.value = value
+  emit('select-data', value)
+}
 </script>
 
 <style scoped>
-
+.videoSelectStyle{
+  width: 362px;
+  margin-left: 18px;
+}
 </style>

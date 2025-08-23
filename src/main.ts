@@ -4,8 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-// import { setupI18n } from './i18n';
-
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 
 import App from './App.vue'
@@ -15,8 +14,9 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(ElementPlus)
-// setupI18n(app);
+app.use(ElementPlus, {
+  locale: zhCn // 配置使用中文语言包
+})
 
 
 app.mount('#app')

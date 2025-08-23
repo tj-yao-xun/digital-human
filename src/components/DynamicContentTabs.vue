@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="editableTabsValue" type="card" editable  class="demo-tabs" @edit="handleTabsEdit">
+  <el-tabs v-model="editableTabsValue" type="card" editable  class="contentTabs" @edit="handleTabsEdit">
     <el-tab-pane
       v-for="item in editableTabs"
       :key="item.name"
@@ -75,7 +75,10 @@ const numberToChinese = (num) => {
 </script>
 
 <style scoped>
-.demo-tabs > .el-tabs__content {
+.contentTabs{
+  margin-top: 15px;
+}
+.contentTabs > .el-tabs__content {
   padding: 32px;
   color: #6b778c;
   font-size: 32px;

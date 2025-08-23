@@ -8,7 +8,7 @@
       :on-remove="handleRemove"
       list-type="picture"
     >
-      <el-button type="primary">上传图片</el-button>
+      <el-button color="#626aef" type="primary" :icon="UploadFilled">上传图片</el-button>
 <!--      <template #tip>-->
 <!--        <div class="el-upload__tip">-->
 <!--          图片大小不超过500M-->
@@ -19,6 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import { UploadFilled } from '@element-plus/icons-vue'
+
 import { ref } from 'vue'
 
 import type { UploadProps, UploadUserFile } from 'element-plus'
@@ -47,5 +49,6 @@ const handlePreview: UploadProps['onPreview'] = (file) => {
 .backImgBox{
   width: 96%;
   margin: 0 auto;
+  margin-top: 15px;
 }
 </style>

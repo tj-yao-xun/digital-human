@@ -4,22 +4,22 @@
       <div class="labelStyle"><span>视频比例</span></div>
     </el-col>
     <el-col :span="19">
-      <el-select v-model="proportion" placeholder="请选择视频比例">
+      <el-select v-model="proportion" placeholder="请选择视频比例" @change="handleChangeProportionOptions">
         <el-option
           v-for="item in proportionOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+          :key="item.id"
+          :label="item.value"
+          :value="item.id"
         />
       </el-select>
     </el-col>
   </el-row>
 
-  <el-row :gutter="8">
+  <el-row :gutter="8" v-if="heightValue && widthValue">
     <el-col :span="5"></el-col>
     <el-col :span="19">
       <div class="proportionTipStyle">
-        <span>宽<em>920</em>像素,高度<em>580</em>像素</span>
+        <span>宽<em>{{widthValue}}</em>像素,高度<em>{{heightValue}}</em>像素</span>
       </div>
     </el-col>
   </el-row>
@@ -27,23 +27,19 @@
 
 <script lang="ts" setup>
 import {  ref } from 'vue'
-const proportion = ref('1')
+import commonConfig from "@/config/common"
+const proportion = ref(null)
+const widthValue = ref()
+const heightValue = ref()
 
 //数字人视频比例选项
-const proportionOptions = [
-  {
-    value: '1',
-    label: '16:9',
-  },
-  {
-    value: '2',
-    label: '4:3',
-  },
-  {
-    value: '3',
-    label: '9:16',
-  }
-]
+const proportionOptions = commonConfig.aspectVideoRatio
+//视频比例切换
+const handleChangeProportionOptions= (value: string) =>{
+  const selectRatio = Array.isArray(proportionOptions) && proportionOptions.find(ratio => ratio.id === value) || null
+  widthValue.value = selectRatio?.width
+  heightValue.value = selectRatio?.height
+}
 </script>
 
 <style scoped>

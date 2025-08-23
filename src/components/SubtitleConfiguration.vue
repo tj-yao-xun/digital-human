@@ -35,6 +35,13 @@
 </template>
 
 <script lang="ts" setup>
+  defineProps({
+    title: {
+      type: String,
+      default: ''
+    }
+  })
+
   import {  ref } from 'vue'
   const captionsVal = ref('1')
   const linesVal = ref('1')
@@ -48,6 +55,6 @@
   margin-top: 15px;
 }
 .labelStyle{
-  text-align: center;
+  text-align: right;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="editableTabsValue" type="card" editable  class="demo-tabs" @edit="handleTabsEdit">
+  <el-tabs v-model="editableTabsValue" type="card" editable  class="demoDigitalTabs" @edit="handleTabsEdit">
     <el-tab-pane
       v-for="item in editableTabs"
       :key="item.name"
@@ -10,8 +10,7 @@
       <dynamic-container :components="item.contentComponents"></dynamic-container>
     </el-tab-pane>
   </el-tabs>
-
-  <digital-scale></digital-scale>
+<!--  <digital-scale></digital-scale>-->
 </template>
 
 <script lang="ts" setup>
@@ -21,7 +20,13 @@ import type { TabPaneName } from 'element-plus'
 import DynamicContainer from "@/components/DynamicContainer.vue";
 import DigitalImage from "@/components/DigitalImage.vue";
 import DigitalVoice from "@/components/DigitalVoice.vue";
-import DigitalScale from "@/components/DigitalScale.vue";
+
+const props = defineProps({
+  DigitalKey:{type:String,default:''},
+  title:{type:String,default:''}
+})
+
+console.log('HHHH====',props.DigitalKey)
 
 let tabIndex = 2
 const editableTabsValue = ref('1')
@@ -89,10 +94,20 @@ const numberToChinese = (num) => {
 </script>
 
 <style scoped>
-.demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+.demoDigitalTabs{
+  border: 1px solid var(--el-border-color-light);
+  height: 170px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+/**样式穿透写法**/
+.demoDigitalTabs :deep(.el-tabs__header){
+  margin-bottom: 0;
+}
+.demoDigitalTabs :deep(.el-tabs__content){
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  padding-top: 15px;
 }
 </style>

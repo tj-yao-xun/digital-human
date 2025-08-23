@@ -4,7 +4,7 @@
       <div class="labelStyle"><span>数字人声音</span></div>
     </el-col>
     <el-col :span="19">
-      <el-select v-model="voice" placeholder="请选择数字人声音">
+      <el-select v-model="voice" placeholder="请选择数字人声音" @change="handleChangeVoice">
         <el-option
           v-for="item in voiceOptions"
           :key="item.value"
@@ -15,7 +15,7 @@
     </el-col>
   </el-row>
 
-  <el-row :gutter="8" v-if="selectedAudio">
+  <el-row :gutter="8" v-if="selectAudioValue">
     <el-col :span="5"></el-col>
     <el-col :span="19">
       <el-card class="audio-player-card">
@@ -36,41 +36,43 @@
 
 <script lang="ts" setup>
 import {computed, onMounted, onUnmounted, ref} from 'vue'
-import {VideoPause,VideoPlay,Edit} from '@element-plus/icons-vue'
-const voice = ref('1')
+import {VideoPause,VideoPlay} from '@element-plus/icons-vue'
+import {DhSoundListReplay} from "@/request/dhRequestObj";
+import dhRequest from "@/request/dhRequest";
+const voice = ref(null)
 //数字人声音选项
-const voiceOptions = [
-  {
-    id: 1,
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    label: '示例音频1',
-  },
-  {
-    value: '2',
-    label: '示例音频2',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-  },
-  {
-    value: '3',
-    label: '示例音频3',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+const voiceOptions = ref([])
+const getGraphicsVoiceOptions = () => {
+  const callback = (data: DhSoundListReplay): void => {
+    voiceOptions.value = data.data_list.filter(item => item && item.speaker_id).map((item) => {
+      return {
+        id:item.speaker_id,
+        label: item.speaker_name, //名称
+        value: item.speaker_id ?? '', //ID
+        url: item.speaker_url  //音频链接
+      }
+    })
   }
-]
+  dhRequest.DhSoundList(callback)
+}
 // 当前选择的音频ID和音频对象
 const selectedAudioId = ref(null)
-
 const selectedAudio = computed(() =>
-  voiceOptions.find(audio => audio.id === selectedAudioId.value) || null
+  Array.isArray(voiceOptions.value) && voiceOptions.value.find(audio => audio.id === selectedAudioId.value) || null
 )
-
+const selectAudioValue = ref();
+//选择音频下拉事件
+const handleChangeVoice = (value: string) => {
+  selectedAudioId.value = value
+  selectAudioValue.value = selectedAudio.value
+  handleAudioSelect()
+}
 // 播放状态
 const isPlaying = ref(false)
 const currentTime = ref(0)
 const duration = ref(0)
-
 // 音频元素
 let audioElement = null
-
 // 格式化时间
 const formatTime = (timeInSeconds) => {
   if (isNaN(timeInSeconds)) return '00:00'
@@ -78,7 +80,6 @@ const formatTime = (timeInSeconds) => {
   const seconds = Math.floor(timeInSeconds % 60)
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
 }
-
 // 初始化音频
 const initAudio = () => {
   if (audioElement) {
@@ -137,11 +138,7 @@ const handleAudioSelect = () => {
 
 // 生命周期钩子
 onMounted(() => {
-  // 默认选择第一个音频
-  if (voiceOptions.length > 0) {
-    selectedAudioId.value = voiceOptions[0].id
-    handleAudioSelect()
-  }
+  getGraphicsVoiceOptions();
 })
 
 onUnmounted(() => {

@@ -1,15 +1,17 @@
 <template>
-  <div class="manuscriptBox">
-    <span>数字人播报内容</span>
-    <div class="manuscript">
+  <el-row :gutter="8">
+    <el-col :span="5">
+      <div class="labelStyle"><span>播报内容</span></div>
+    </el-col>
+    <el-col :span="19">
       <el-input
         v-model="manuscript"
         :autosize="{ minRows: 2, maxRows: 4 }"
         type="textarea"
         placeholder="请输入播报内容"
       />
-    </div>
-  </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script lang="ts" setup>
@@ -18,12 +20,11 @@ const manuscript = ref('')
 </script>
 
 <style scoped>
-.manuscriptBox{
-  width: 96%;
-  margin: 0 auto;
-  margin-top: 10px;
+.el-row{
+  width: 100%;
+  margin-top: 15px;
 }
-.manuscript{
-  margin-top: 10px;
+.labelStyle{
+  text-align: right;
 }
 </style>

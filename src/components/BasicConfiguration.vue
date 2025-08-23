@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-import DigitalImage from "@/components/DigitalImage.vue";
-import DigitalVoice from "@/components/DigitalVoice.vue";
-import DigitalScale from "@/components/DigitalScale.vue";
+import DigitalImage from "@/components/DigitalImage.vue"
+import DigitalVoice from "@/components/DigitalVoice.vue"
+import DigitalScale from "@/components/DigitalScale.vue"
 </script>
 
 <style scoped>
@@ -17,8 +17,8 @@ import DigitalScale from "@/components/DigitalScale.vue";
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 20px;
   flex-direction: column;
+  margin-top: -15px;
   align-items: center;
 }
 </style>

@@ -51,14 +51,14 @@
 import { ref } from 'vue'
 import { Lock, User } from '@element-plus/icons-vue'
 
-import userRequest from '@/request/usersRequest.ts'
-import appRequest from '@/request/appRequest.ts'
-import type { LoginReply } from '@/request/userRequestObj.ts'
-import type {
-  AppInfoReply,
-  AppListReply,
-  UpdateAppReply, UpdateAppStateReply
-} from '@/request/appRequestObj.ts'
+// import userRequest from '@/request/usersRequest.ts'
+// import appRequest from '@/request/appRequest.ts'
+// import type { LoginReply } from '@/request/userRequestObj.ts'
+// import type {
+//   AppInfoReply,
+//   AppListReply,
+//   UpdateAppReply, UpdateAppStateReply
+// } from '@/request/appRequestObj.ts'
 
   (() => {
   // const userToken = LocalCache.getStringCache(Constant.USER_TOKEN)
@@ -72,17 +72,17 @@ const password = ref('')
 
 const userLogin = () => {
 
-  const callback = (data: LoginReply): void => {
-    window.localStorage.setItem('user-id', data.user_id.toString())
-    window.localStorage.setItem('user-token', data.user_token)
-    window.localStorage.setItem('user-flash-token', data.user_flash_token)
-    window.localStorage.setItem('share256-key', JSON.stringify(data.share256_key))
-    window.localStorage.setItem('username', data.username)
-    window.localStorage.setItem('user-nick-name', data.user_nick_name)
-    window.localStorage.setItem('permission-list', JSON.stringify(data.permission_list))
-    // location.href = "/"
-  }
-  userRequest.Login(callback, username.value, password.value)
+  // const callback = (data: LoginReply): void => {
+  //   window.localStorage.setItem('user-id', data.user_id.toString())
+  //   window.localStorage.setItem('user-token', data.user_token)
+  //   window.localStorage.setItem('user-flash-token', data.user_flash_token)
+  //   window.localStorage.setItem('share256-key', JSON.stringify(data.share256_key))
+  //   window.localStorage.setItem('username', data.username)
+  //   window.localStorage.setItem('user-nick-name', data.user_nick_name)
+  //   window.localStorage.setItem('permission-list', JSON.stringify(data.permission_list))
+  //   // location.href = "/"
+  // }
+  // userRequest.Login(callback, username.value, password.value)
 }
 
 const addApp = () => {
@@ -101,7 +101,7 @@ const appInfo = () => {
     console.log(123)
     console.log('Login successful:', data)
   }
-  appRequest.AppInfo(callback, '9dc0289b-b266-4729-b570-6a28fe9d627e')
+  // appRequest.AppInfo(callback, '9dc0289b-b266-4729-b570-6a28fe9d627e')
 }
 
 const appList = () => {
@@ -113,7 +113,7 @@ const appList = () => {
   const appIdList: string[] = []
   appIdList.push('9dc0289b-b266-4729-b570-6a28fe9d627e')
 
-  appRequest.AppList(callback, appIdList)
+  // appRequest.AppList(callback, appIdList)
 }
 
 const updateApp = () => {
@@ -122,7 +122,7 @@ const updateApp = () => {
     console.log(123)
     console.log('Login successful:', data)
   }
-  appRequest.UpdateApp(callback,'9dc0289b-b266-4729-b570-6a28fe9d627e',"应用综合管理平台")
+  // appRequest.UpdateApp(callback,'9dc0289b-b266-4729-b570-6a28fe9d627e',"应用综合管理平台")
 
 }
 
@@ -132,9 +132,7 @@ const updateAppState = () => {
     console.log(123)
     console.log('Login successful:', data)
   }
-  appRequest.UpdateAppState(callback,'9dc0289b-b266-4729-b570-6a28fe9d627e',2)
-
-
+  // appRequest.UpdateAppState(callback,'9dc0289b-b266-4729-b570-6a28fe9d627e',2)
 }
 </script>
 
