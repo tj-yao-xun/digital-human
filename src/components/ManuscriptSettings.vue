@@ -1,5 +1,8 @@
 <template>
   <div class="manuscriptNo">
+    <el-divider content-position="left">
+      <span class="labelTitleStyle">数字人文稿设置</span>
+    </el-divider>
     <el-row :gutter="8">
       <el-col :span="5">
         <div class="labelStyle"><span>播报序号</span></div>
@@ -47,6 +50,11 @@ const voiceSource = ref()
   width: 100%;
   align-items: center;
   margin-top: 15px;
+}
+.labelTitleStyle{
+  color: #626aef;
+  font-size: 14px;
+  font-weight: bolder;
 }
 .labelStyle{
   text-align: center;

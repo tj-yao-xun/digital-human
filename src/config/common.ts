@@ -44,23 +44,19 @@ const commonConfig = {
       components:[
         {
           component: () => import('@/components/DigitalImage.vue'),
-          props: { title: '数字人形象' }
+          props: { } //title: '数字人形象'
         },
         {
           component: () => import('@/components/DigitalVoice.vue'),
-          props: { title: '数字人声音' }
+          props: {  } //title: '数字人声音'
         },
-        // {
-        //   component: () => import('@/components/BasicConfiguration.vue'),
-        //   props: { title: '数字人基础配置' }
-        // },
         {
           component: () => import('@/components/SubtitleConfiguration.vue'),
-          props: { title: '数字人字幕配置' }
+          props: { } // title: '数字人字幕配置'
         },
         {
           component: () => import('@/components/ManuscriptContent.vue'),
-          props: { title: '数字人文稿' }
+          props: {} // title: '数字人文稿'
         }
       ]
     },
@@ -70,28 +66,24 @@ const commonConfig = {
       components:[
         {
           component: () => import('@/components/DigitalImage.vue'),
-          props: { title: '数字人形象' }
+          props: {} // title: '数字人形象'
         },
         {
           component: () => import('@/components/DigitalVoice.vue'),
-          props: { title: '数字人声音' }
+          props: { } // title: '数字人声音'
         },
-        // {
-        //   component: () => import('@/components/BasicConfiguration.vue'),
-        //   props: { title: '数字人基础配置' }
-        // },
         {
           component: () => import('@/components/SubtitleConfiguration.vue'),
-          props: { title: '数字人字幕配置' }
+          props: {} // title: '数字人字幕配置'
         },
         {
           component: () => import('@/components/ManuscriptContent.vue'),
-          props: { title: '数字人文稿' }
+          props: {  } //title: '数字人文稿'
         },
         {
           component: () => import('@/components/BackImgSetting.vue'),
-          props: { title: '背景图片设置' }
-        },
+          props: {  DigitalKey:'TransparentDigitalHuman' } //title: '自定义背景数字人'
+        }
       ]
     },
     //透明数字人
@@ -100,23 +92,27 @@ const commonConfig = {
       components:[
         {
           component: () => import('@/components/DynamicTabs.vue'),
-          props: { title: '透明数字人', DigitalKey:'TransparentDigitalHuman'}
+          props: { DigitalKey:'TransparentDigitalHuman'} // title: '透明数字人'
         },
         {
           component: () => import('@/components/DigitalScale.vue'),
-          props: { title: '视频比例配置'}
+          props: {} // title: '视频比例配置'
         },
         {
           component: () => import('@/components/SubtitleConfiguration.vue'),
-          props: { title: '数字人字幕配置' }
+          props: {} // title: '数字人字幕配置'
         },
+        // {
+        //   component: () => import('@/components/BackImgSetting.vue'),
+        //   props: { } // title: '数字人背景'
+        // },
         {
           component: () => import('@/components/DynamicContentTabs.vue'),
-          props: { title: '内容区配置' }
+          props: {  } //title: '内容区配置'
         },
         {
           component: () => import('@/components/ManuscriptSettings.vue'),
-          props: { title: '数字人文稿设置' }
+          props: {} // title: '数字人文稿设置'
         },
       ]
     },
@@ -126,23 +122,27 @@ const commonConfig = {
       components:[
         {
           component: () => import('@/components/DynamicTabs.vue'),
-          props: { title: '动态增减tab', DigitalKey:'ContentDigitalHuman' }
+          props: { DigitalKey:'ContentDigitalHuman' } // title: '动态增减tab',
         },
         {
           component: () => import('@/components/DigitalScale.vue'),
-          props: { title: '视频比例配置'}
+          props: { } //title: '视频比例配置'
         },
         {
           component: () => import('@/components/SubtitleConfiguration.vue'),
-          props: { title: '数字人字幕配置' }
+          props: { } // title: '数字人字幕配置'
+        },
+        {
+          component: () => import('@/components/BackImgSetting.vue'),
+          props: {} // title: '全局背景图设置'
         },
         {
           component: () => import('@/components/DynamicContentTabs.vue'),
-          props: { title: '内容区配置' }
+          props: {  } //title: '内容区配置'
         },
         {
           component: () => import('@/components/ManuscriptSettings.vue'),
-          props: { title: '数字人文稿设置' }
+          props: {} // title: '数字人文稿设置'
         },
       ]
     },
@@ -152,19 +152,23 @@ const commonConfig = {
       components:[
         {
           component: () => import('@/components/DynamicTabs.vue'),
-          props: { title: '动态增减tab', DigitalKey:'VoiceDigitalHuman'}
+          props: { DigitalKey:'VoiceDigitalHuman'} // title: '动态增减tab',
         },
         {
           component: () => import('@/components/SubtitleConfiguration.vue'),
-          props: { title: '数字人字幕配置' }
+          props: { } // title: '数字人字幕配置'
+        },
+        {
+          component: () => import('@/components/BackImgSetting.vue'),
+          props: { } //title: '全局背景图设置'
         },
         {
           component: () => import('@/components/DynamicContentTabs.vue'),
-          props: { title: '内容区配置' }
+          props: {  } //title: '内容区配置'
         },
         {
           component: () => import('@/components/ManuscriptSettings.vue'),
-          props: { title: '数字人文稿设置' }
+          props: { } // title: '数字人文稿设置'
         },
       ]
     }

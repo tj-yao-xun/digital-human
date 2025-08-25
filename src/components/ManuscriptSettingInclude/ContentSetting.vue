@@ -1,9 +1,11 @@
 <template>
-  <el-divider class="digitalManTitle">
+
+  <el-divider class="digitalManTitles">
     <el-icon><star-filled /></el-icon>
     <span>内容设置</span>
     <el-icon><star-filled /></el-icon>
   </el-divider>
+
   <el-row :gutter="8">
     <el-col :span="7">
       <div class="labelStyle"><span>内容是否显示</span></div>
@@ -128,6 +130,25 @@ const contentOptions = [
 </script>
 
 <style scoped>
+.digitalManTitles{}
+.digitalManTitles .el-divider__text.is-center{
+  display: flex;
+  align-items: center;
+}
+.demo-tabs{
+  margin-top: 10px;
+  border-bottom: 1px solid var(--el-border-color-light);
+}
+/**样式穿透写法**/
+.demo-tabs :deep(.el-tabs__header){
+  margin-bottom: 0;
+}
+.demo-tabs :deep(.el-tabs__content){
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 .el-row{
   width: 100%;
   align-items: center;

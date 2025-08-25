@@ -29,8 +29,10 @@
     </el-tab-pane>
   </el-tabs>
 
-  <div class="positionBox">
-    <point-setting-tabs></point-setting-tabs>
+  <div class="positionWrapper">
+    <div class="positionBox">
+      <point-setting-tabs></point-setting-tabs>
+    </div>
   </div>
 
 </template>
@@ -103,14 +105,26 @@ const numberToChinese = (num) => {
 </script>
 
 <style scoped>
-.digitalManTitle{
+.digitalManTitle{}
+.digitalManTitle .el-divider__text.is-center {
+  display: flex;
+  align-items: center;
 }
-.demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+.demo-tabs{
+  margin-top: 10px;
+  /*border-bottom: 1px solid var(--el-border-color-light);*/
 }
+/**样式穿透写法**/
+.demo-tabs :deep(.el-tabs__header){
+  margin-bottom: 0;
+}
+.demo-tabs :deep(.el-tabs__content){
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .el-row{
   width: 100%;
   align-items: center;
@@ -119,8 +133,16 @@ const numberToChinese = (num) => {
 .labelStyle{
   text-align: center;
 }
+.positionWrapper{
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  margin-top: -30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--el-border-color-light);
+}
 .positionBox{
   width: 90%;
   margin: 0 auto;
+  padding-top: 30px;
 }
 </style>

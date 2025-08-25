@@ -81,5 +81,17 @@ const numberToChinese = (num) => {
 </script>
 
 <style scoped>
-
+.demo-tabs{
+  border-bottom: 1px solid var(--el-border-color-light);
+}
+/**样式穿透写法**/
+.demo-tabs :deep(.el-tabs__header){
+  margin-bottom: 0;
+}
+.demo-tabs :deep(.el-tabs__content){
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 </style>

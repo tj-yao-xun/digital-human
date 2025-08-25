@@ -1,15 +1,20 @@
 <template>
-  <el-tabs v-model="editableTabsValue" type="card" editable  class="contentTabs" @edit="handleTabsEdit">
-    <el-tab-pane
-      v-for="item in editableTabs"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
-    >
-      <!-- 动态组件渲染区域 -->
-      <component :is="item.contentComponent"></component>
-    </el-tab-pane>
-  </el-tabs>
+
+  <div class="contentWrapper">
+    <el-divider content-position="left"><span class="labelTitleStyle">内容区设置</span></el-divider>
+    <el-tabs v-model="editableTabsValue" type="card" editable  class="contentTabs" @edit="handleTabsEdit">
+      <el-tab-pane
+        v-for="item in editableTabs"
+        :key="item.name"
+        :label="item.title"
+        :name="item.name"
+      >
+        <!-- 动态组件渲染区域 -->
+        <component :is="item.contentComponent"></component>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
+
 </template>
 
 <script lang="ts" setup>
@@ -77,11 +82,22 @@ const numberToChinese = (num) => {
 <style scoped>
 .contentTabs{
   margin-top: 15px;
+  border-bottom: 1px solid var(--el-border-color-light);
 }
-.contentTabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+.labelTitleStyle{
+  color: #626aef;
+  font-size: 14px;
+  font-weight: bolder;
 }
+/**样式穿透写法**/
+.contentTabs :deep(.el-tabs__header){
+  margin-bottom: 0;
+}
+.contentTabs :deep(.el-tabs__content){
+  border-left: 1px solid var(--el-border-color-light);
+  border-right: 1px solid var(--el-border-color-light);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 </style>

@@ -129,8 +129,13 @@
         <el-input v-model="input" style="width: 240px" placeholder="请输入变换时间(秒)" />
       </el-col>
     </el-row>
+
     <!--点位设置-->
-    <point-setting-tabs></point-setting-tabs>
+    <div class="positionWrapper">
+      <div class="positionBox">
+        <point-setting-tabs></point-setting-tabs>
+      </div>
+    </div>
 
   </div>
 
@@ -194,5 +199,15 @@ const input = ref()
 }
 .labelStyle{
   text-align: center;
+}
+
+.positionWrapper{
+  margin-top: -30px;
+  padding-bottom: 30px;
+}
+.positionBox{
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 30px;
 }
 </style>

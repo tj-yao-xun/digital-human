@@ -10,41 +10,54 @@
       <dynamic-container :components="item.contentComponents"></dynamic-container>
     </el-tab-pane>
   </el-tabs>
-<!--  <digital-scale></digital-scale>-->
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref,watch,shallowRef } from 'vue'
 import type { TabPaneName } from 'element-plus'
 
 import DynamicContainer from "@/components/DynamicContainer.vue";
 import DigitalImage from "@/components/DigitalImage.vue";
 import DigitalVoice from "@/components/DigitalVoice.vue";
+import BackImgSetting from "@/components/BackImgSetting.vue";
+
 
 const props = defineProps({
   DigitalKey:{type:String,default:''},
   title:{type:String,default:''}
 })
 
-console.log('HHHH====',props.DigitalKey)
+const tabConfigSetting = {
+  //透明数字人
+  TransparentDigitalHuman:[
+    { component: DigitalImage, props: { data: 'B 的数据' } },
+    { component: DigitalVoice, props: { data: 'B 的数据' } },
+    { component: BackImgSetting, props: { data: 'B 的数据' } },
+  ],
+  ContentDigitalHuman:[
+    { component: DigitalImage, props: { data: 'B 的数据' } },
+    { component: DigitalVoice, props: { data: 'B 的数据' } },
+    { component: BackImgSetting, props: { data: 'B 的数据' } },
+  ],
+  VoiceDigitalHuman:[
+    { component: DigitalVoice, props: { data: 'B 的数据' } },
+  ]
+}
+console.log('+++++',tabConfigSetting)
+console.log('=======',tabConfigSetting[props.DigitalKey])
 
 let tabIndex = 2
 const editableTabsValue = ref('1')
-const editableTabs = ref([
+const editableTabs = shallowRef([
   {
     title: '数字人一',
     name: '1',
-    contentComponents:[
-      { component: DigitalImage, props: { msg: 'A 的参数' } },
-      { component: DigitalVoice, props: { data: 'B 的数据' } }
-    ]
+    contentComponents:tabConfigSetting[props.DigitalKey] || []
   },
   {
     title: '数字人二',
     name: '2',
-    contentComponents:[
-      { component: DigitalVoice, props: { data: 'B 的数据' } }
-    ]
+    contentComponents:tabConfigSetting[props.DigitalKey] || []
   },
 ])
 
@@ -58,10 +71,7 @@ const handleTabsEdit = (
     editableTabs.value.push({
       title: '数字人'+upperTabIndex,
       name: newTabName,
-      contentComponents:[
-        { component: DigitalImage, props: { msg: 'A 的参数' } },
-        { component: DigitalVoice, props: { data: 'B 的数据' } }
-      ]
+      contentComponents:tabConfigSetting[props.DigitalKey] || []
     })
     editableTabsValue.value = newTabName
   } else if (action === 'remove') {
@@ -90,13 +100,11 @@ const numberToChinese = (num) => {
   }
   return chineseMap[num];
 }
-
 </script>
 
 <style scoped>
 .demoDigitalTabs{
   border: 1px solid var(--el-border-color-light);
-  height: 170px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -109,5 +117,6 @@ const numberToChinese = (num) => {
   border-left: 1px solid var(--el-border-color-light);
   border-right: 1px solid var(--el-border-color-light);
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 </style>
