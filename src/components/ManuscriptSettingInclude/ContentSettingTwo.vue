@@ -203,7 +203,7 @@ const input = ref()
 
 .positionWrapper{
   margin-top: -30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 .positionBox{
   width: 90%;
