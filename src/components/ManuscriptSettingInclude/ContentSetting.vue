@@ -17,6 +17,7 @@
       />
     </el-col>
   </el-row>
+
   <el-tabs v-model="editableTabsValue" type="card" editable  class="demo-tabs" @edit="handleTabsEdit">
     <el-tab-pane
       v-for="item in editableTabs"

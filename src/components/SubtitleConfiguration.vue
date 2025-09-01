@@ -11,7 +11,7 @@
     </el-col>
   </el-row>
 
-  <el-row :gutter="8">
+  <el-row :gutter="8" v-if="captionsVal==='2'">
     <el-col :span="5">
       <div class="labelStyle"><span>同屏字幕行数</span></div>
     </el-col>
@@ -23,7 +23,7 @@
     </el-col>
   </el-row>
 
-  <el-row :gutter="8">
+  <el-row :gutter="8" v-if="captionsVal==='2'">
     <el-col :span="5">
       <div class="labelStyle"><span>字幕颜色</span></div>
     </el-col>
@@ -35,14 +35,13 @@
 </template>
 
 <script lang="ts" setup>
+  import {  ref } from 'vue'
   defineProps({
     title: {
       type: String,
       default: ''
     }
   })
-
-  import {  ref } from 'vue'
   const captionsVal = ref('1')
   const linesVal = ref('1')
   const color2 = ref() //颜色选择器

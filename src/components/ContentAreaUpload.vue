@@ -18,12 +18,9 @@
   <el-row v-if="contentKind">
     <el-col :span="5"></el-col>
     <el-col :span="19">
-      <el-upload
-        v-model:file-list="fileList"
-        list-type="picture"
-        class="upload-demo"
-        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-        multiple
+      <el-upload v-model:file-list="fileList" list-type="picture" class="upload-demo"
+                 action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                 multiple
         :on-preview="handlePreview"
         :on-remove="handleRemove"
         :limit="3"
@@ -83,9 +80,12 @@
 </template>
 
 <script lang="ts" setup>
-import {  ref } from 'vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import {onMounted, ref} from 'vue'
+import { ElMessage } from 'element-plus'
 import type { UploadProps, UploadUserFile } from 'element-plus'
+import commonConfig from "@/config/common";
+import {DhListReplay, DhPptAnalysisReplay} from "@/request/dhRequestObj";
+import dhRequest from "@/request/dhRequest";
 
 const contentKind = ref('')
 const logoVal = ref(1)
@@ -95,24 +95,8 @@ const widthVal = ref('')
 const heightVal = ref('')
 
 //内容类型
-const contentKindOptions = [
-  {
-    value: '图片',
-    label: '图片',
-  },
-  {
-    value: 'PPT',
-    label: 'PPT',
-  },
-  {
-    value: 'PDF',
-    label: 'PDF',
-  },
-  {
-    value: '视频',
-    label: '视频',
-  }
-]
+const contentKindOptions = commonConfig.ContentUploadOptions
+
 const fileList = ref<UploadUserFile[]>([
   {
     name: 'element-plus-logo.svg',
@@ -123,12 +107,15 @@ const fileList = ref<UploadUserFile[]>([
     url: 'https://element-plus.org/images/element-plus-logo.svg',
   },
 ])
+
 const handleRemove: UploadProps['onRemove'] = (file, uploadFiles) => {
   console.log(file, uploadFiles)
 }
+
 const handlePreview: UploadProps['onPreview'] = (uploadFile) => {
   console.log(uploadFile)
 }
+
 const handleExceed: UploadProps['onExceed'] = (files, uploadFiles) => {
   ElMessage.warning(
     `The limit is 3, you selected ${files.length} files this time, add up to ${
@@ -139,6 +126,30 @@ const handleExceed: UploadProps['onExceed'] = (files, uploadFiles) => {
 const handleChangeContentKind=(val)=>{
   console.log(val);
 }
+
+
+const dhVideoNo = 'f91ccd07-1692-4c28-8b59-387551a71b09'
+const pptUrl = 'https://dahua-oss.oss-cn-hangzhou.aliyuncs.com/20230811/1691728396894_1691728396894.pptx'
+
+
+//PPT 分析
+const handleAnalyzePPT=()=>{
+  const callback = (data: DhPptAnalysisReplay): void => {
+    console.log(data)
+  }
+  dhRequest.DhPptAnalysis(callback, dhVideoNo, '')
+}
+
+//PDF 分析
+const handleAnalyzePDF=()=>{
+  console.log('分析PDF');
+}
+
+onMounted(()=>{
+  handleAnalyzePPT()
+})
+
+
 </script>
 
 <style scoped>

@@ -133,10 +133,6 @@ const commonConfig = {
           props: { } // title: '数字人字幕配置'
         },
         {
-          component: () => import('@/components/BackImgSetting.vue'),
-          props: {} // title: '全局背景图设置'
-        },
-        {
           component: () => import('@/components/DynamicContentTabs.vue'),
           props: {  } //title: '内容区配置'
         },
@@ -172,7 +168,13 @@ const commonConfig = {
         },
       ]
     }
-  }
+  },
+  ContentUploadOptions:[
+    {value:'image',label: '图片'},
+    {value:'ppt',label: 'PPT'},
+    {value:'pdf',label: 'PDF'},
+    {value:'video',label: '视频'}
+  ]
 };
 
 export default commonConfig;
