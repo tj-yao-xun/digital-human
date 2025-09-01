@@ -1,6 +1,6 @@
 <template>
 <div class="uploadContainer">
-  <el-row :gutter="8"  v-if="props.DigitalKey !='TransparentDigitalHuman'">
+  <el-row :gutter="8" v-if="showBackStatus">
     <el-col :span="5">
       <div class="labelStyle"><span>背景设置</span></div>
     </el-col>
@@ -16,7 +16,7 @@
     </el-col>
   </el-row>
 
-  <div class="backImgBox">
+  <div class="backImgBox" v-if="showFreeStyleBackground">
     <el-upload
       v-model:file-list="fileList"
       class="upload-demo"
@@ -38,9 +38,8 @@
 
 <script lang="ts" setup>
 import { UploadFilled } from '@element-plus/icons-vue'
-
-import { ref } from 'vue'
-
+import type { UploadProps, UploadUserFile } from 'element-plus'
+import {ref, computed, watchEffect} from 'vue'
 const props = defineProps({
   DigitalKey: {
     type: String,
@@ -64,7 +63,17 @@ const proportionOptions = ref([
   },
 ])
 
-import type { UploadProps, UploadUserFile } from 'element-plus'
+//计算属性显示隐藏
+const showBackStatus = computed(() => {
+  return props.DigitalKey !='FreeStyleDigitalHuman'
+})
+
+//只有选择自定义背景的时候才会显示上传图片部分
+const showFreeStyleBackground = ref(props.DigitalKey==='FreeStyleDigitalHuman')
+//自定义背景设置切换方法
+const handleChangeProportionOptions = (value) => {
+  showFreeStyleBackground.value = props.DigitalKey !='TransparentDigitalHuman' && value == 3
+}
 
 const fileList = ref<UploadUserFile[]>([
   {
@@ -84,6 +93,9 @@ const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
 const handlePreview: UploadProps['onPreview'] = (file) => {
   console.log(file)
 }
+
+
+
 </script>
 
 <style scoped>

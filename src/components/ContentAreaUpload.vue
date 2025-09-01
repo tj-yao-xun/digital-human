@@ -14,11 +14,10 @@
       </el-select>
     </el-col>
   </el-row>
-
   <el-row v-if="contentKind">
     <el-col :span="5"></el-col>
     <el-col :span="19">
-      <el-upload v-model:file-list="fileList" list-type="picture" class="upload-demo"
+      <el-upload v-model:file-list="fileList" list-type="picture" class="contentUploadWrapper"
                  action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
                  multiple
         :on-preview="handlePreview"
@@ -31,24 +30,25 @@
     </el-col>
   </el-row>
 
-  <el-row v-if="contentKind && contentKind!='图片'">
+  <el-row v-if="logoStatus">
     <el-col :span="5">
       <div class="labelStyle"><span>是否去LOGO</span></div>
     </el-col>
     <el-col :span="19">
-      <el-radio-group v-model="logoVal">
+      <el-radio-group v-model="logoVal" @change="handleRadioLogoValChange">
         <el-radio :value="1" size="large">保留LOGO</el-radio>
         <el-radio :value="2" size="large">去除LOGO</el-radio>
       </el-radio-group>
     </el-col>
   </el-row>
 
-  <template  v-if="contentKind && contentKind==='PDF'">
+  <!---case:choose 2 show-->
+  <template v-if="logoOptionVal">
     <el-row>
       <el-col :span="5">
         <div class="labelStyle"><span>LOGO X坐标</span></div>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="18">
         <el-input v-model="xVal" placeholder="请输入LOGO x 坐标" />
       </el-col>
     </el-row>
@@ -56,7 +56,7 @@
       <el-col :span="5">
         <div class="labelStyle"><span>LOGO Y坐标</span></div>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="18">
         <el-input v-model="yVal" placeholder="请输入LOGO Y坐标" />
       </el-col>
     </el-row>
@@ -64,7 +64,7 @@
       <el-col :span="5">
         <div class="labelStyle"><span>LOGO宽度</span></div>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="18">
         <el-input v-model="widthVal" placeholder="请输入LOGO宽度" />
       </el-col>
     </el-row>
@@ -72,7 +72,7 @@
       <el-col :span="5">
         <div class="labelStyle"><span>LOGO高度</span></div>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="18">
         <el-input v-model="heightVal" placeholder="请输入LOGO高度" />
       </el-col>
     </el-row>
@@ -93,6 +93,14 @@ const xVal = ref('')
 const yVal = ref('')
 const widthVal = ref('')
 const heightVal = ref('')
+//是否显示去除logo选项
+const logoStatus = ref(false)
+const logoOptionVal = ref(false) //logo 去除显示
+const handleRadioLogoValChange = (val)=>{
+  console.log('#############',val,val === 2)
+  logoOptionVal.value = val === 2
+}
+
 
 //内容类型
 const contentKindOptions = commonConfig.ContentUploadOptions
@@ -123,15 +131,18 @@ const handleExceed: UploadProps['onExceed'] = (files, uploadFiles) => {
     } totally`
   )
 }
-const handleChangeContentKind=(val)=>{
-  console.log(val);
-}
 
+//上传的按钮的文言显示
+const handleChangeContentKind=(val)=>{
+  const result = contentKindOptions.filter(item => item.value === val)
+  contentKind.value = result[0].label
+  const strArray = ['ppt','pdf','video']
+  const isExist = strArray.includes(val);
+  logoStatus.value = isExist
+}
 
 const dhVideoNo = 'f91ccd07-1692-4c28-8b59-387551a71b09'
 const pptUrl = 'https://dahua-oss.oss-cn-hangzhou.aliyuncs.com/20230811/1691728396894_1691728396894.pptx'
-
-
 //PPT 分析
 const handleAnalyzePPT=()=>{
   const callback = (data: DhPptAnalysisReplay): void => {
@@ -163,6 +174,8 @@ onMounted(()=>{
 }
 .uploadContainer{
   display: flex;
-
+}
+.contentUploadWrapper{
+  width: 95%;
 }
 </style>

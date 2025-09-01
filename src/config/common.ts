@@ -82,7 +82,7 @@ const commonConfig = {
         },
         {
           component: () => import('@/components/BackImgSetting.vue'),
-          props: {  DigitalKey:'TransparentDigitalHuman' } //title: '自定义背景数字人'
+          props: {  DigitalKey:'FreeStyleDigitalHuman' } //title: '自定义背景数字人'
         }
       ]
     },
@@ -173,7 +173,8 @@ const commonConfig = {
     {value:'image',label: '图片'},
     {value:'ppt',label: 'PPT'},
     {value:'pdf',label: 'PDF'},
-    {value:'video',label: '视频'}
+    {value:'video',label: '视频'},
+    {value:'audio',label: '音频'}
   ]
 };
 
