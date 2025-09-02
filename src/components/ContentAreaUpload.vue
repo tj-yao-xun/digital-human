@@ -142,14 +142,15 @@ const handleChangeContentKind=(val)=>{
 }
 
 const dhVideoNo = 'f91ccd07-1692-4c28-8b59-387551a71b09'
-const pptUrl = 'https://dahua-oss.oss-cn-hangzhou.aliyuncs.com/20230811/1691728396894_1691728396894.pptx'
+const pptUrl = 'https://cloud.diandianjfb.cn/static/images/1111.pptx'
 //PPT 分析
 const handleAnalyzePPT=()=>{
   const callback = (data: DhPptAnalysisReplay): void => {
     console.log(data)
   }
-  dhRequest.DhPptAnalysis(callback, dhVideoNo, '')
+  dhRequest.DhPptAnalysis(callback, dhVideoNo, pptUrl)
 }
+
 
 //PDF 分析
 const handleAnalyzePDF=()=>{
